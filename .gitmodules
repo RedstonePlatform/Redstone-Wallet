@@ -6,3 +6,6 @@
 	path = FederatedSidechains
 	url = https://github.com/stratisproject/FederatedSidechains
 	
+[submodule "Redstone"]
+	path = Redstone
+	url = https://github.com/RedstonePlatform/Redstone.git
