@@ -18,13 +18,13 @@ nodaemon = args.some(val => val === "--nodaemon" || val === "-nodaemon");
 
 let apiPort;
 if (testnet && !sidechain) {
-  apiPort = 38221;
+  apiPort = 38222;
 } else if (!testnet && !sidechain) {
-  apiPort = 37221;
+  apiPort = 37222;
 } else if (sidechain && testnet) {
-  apiPort = 38225;
+  apiPort = 38225; // TODO update sidechain port
 } else if (sidechain && !testnet) {
-  apiPort = 38225;
+  apiPort = 38225; //TODO update sidechain port
 }
 
 ipcMain.on('get-port', (event, arg) => {
@@ -55,7 +55,7 @@ function createWindow() {
     frame: true,
     minWidth: 1150,
     minHeight: 650,
-    title: "Stratis Core"
+    title: "Redstone Wallet"
   });
 
   if (serve) {
@@ -86,20 +86,20 @@ function createWindow() {
     mainWindow = null;
   });
 
-};
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   if (serve) {
-    console.log("Stratis UI was started in development mode. This requires the user to be running the Stratis Full Node Daemon himself.")
+    console.log("Redstone Wallet was started in development mode. This requires the user to be running the Redstone Full Node Daemon.");
   }
   else {
     if (sidechain && !nodaemon) {
       startDaemon("Stratis.SidechainD");
     } else if (!nodaemon) {
-      startDaemon("Stratis.StratisD")
+      startDaemon("Redstone.RedstoneFullNodeD")
     }
   }
   createTray();
@@ -143,12 +143,20 @@ function shutdownDaemon(portNumber) {
   request.setHeader("content-type", "application/json-patch+json");
   request.write('true');
   request.end();
-};
+}
 
 function startDaemon(daemonName) {
   var daemonProcess;
   var spawnDaemon = require('child_process').spawn;
 
+  //Start Redstone Daemon
+  //let apiPath = path.resolve(__dirname, 'assets//daemon//Redstone.RedstoneFullNodeD');
+  //if (os.platform() === 'win32') {
+  //  apiPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\Redstone.RedstoneFullNodeD.exe');
+  //} else if(os.platform() === 'linux') {
+	//  apiPath = path.resolve(__dirname, '..//..//resources//daemon//Redstone.RedstoneFullNodeD');
+  //} else {
+	//  apiPath = path.resolve(__dirname, '..//..//resources//daemon//Redstone.RedstoneFullNodeD');
   var daemonPath;
   if (os.platform() === 'win32') {
     daemonPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\' + daemonName + '.exe');
@@ -169,7 +177,7 @@ function startDaemon(daemonName) {
   }
 
   daemonProcess.stdout.on('data', (data) => {
-    writeLog(`Stratis: ${data}`);
+    writeLog(`Redstone: ${data}`);
   });
 }
 
@@ -197,7 +205,7 @@ function createTray() {
       }
     }
   ]);
-  systemTray.setToolTip('Stratis Core');
+  systemTray.setToolTip('Redstone Wallet');
   systemTray.setContextMenu(contextMenu);
   systemTray.on('click', function() {
     if (!mainWindow.isVisible()) {
@@ -237,4 +245,4 @@ function createMenu() {
   ];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
-};
+}

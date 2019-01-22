@@ -43,7 +43,7 @@ Write-Host "*--------------------------------*" -foregroundcolor "magenta"
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
     
 Write-Host "running 'dotnet publish'" -foregroundcolor "magenta"
-cd $env:BUILD_FOLDER/StratisBitcoinFullNode/src/Stratis.StratisD
+cd $env:BUILD_FOLDER/Redstone/src/Redstone/Programs/Redstone.RedstoneFullNodeD
 dotnet publish -c $env:configuration -v m -r $env:win_runtime -o $env:BUILD_FOLDER\StratisCore.UI\daemon
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
    

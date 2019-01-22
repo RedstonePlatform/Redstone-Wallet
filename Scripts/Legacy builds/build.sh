@@ -32,11 +32,11 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $TRAVIS_BUILD_DIR/StratisBitcoinFullNode/src/Stratis.StratisD
+cd $TRAVIS_BUILD_DIR/Redstone/src/Redstone/Programs/Redstone.RedstoneFullNodeD
 dotnet publish -c $configuration -r $TRAVIS_OS_NAME-$arch -v m -o $TRAVIS_BUILD_DIR/StratisCore.UI/daemon
 
 echo $log_prefix chmoding the Stratis.StratisD file
-chmod +x $TRAVIS_BUILD_DIR/StratisCore.UI/daemon/Stratis.StratisD
+chmod +x $TRAVIS_BUILD_DIR/StratisCore.UI/daemon/Redstone.RedstoneFullNodeD
 
 # node packaging
 echo $log_prefix Building and packaging StratisCore.UI 

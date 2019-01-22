@@ -4,7 +4,8 @@ arch=x64
 configuration=Release  
 os_platform=linux
 log_prefix=LINUX-BUILD
-build_directory=$(dirname $PWD)
+build_directory='/home/thecryptohunter/projects/RedstoneWallet' #$(dirname $(dirname "$0"))
+//build_directory=$(dirname $PWD)
 
 # exit if error
 set -o errexit
@@ -32,12 +33,12 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/StratisBitcoinFullNode/src/Stratis.StratisD
-dotnet restore
-dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
+cd $build_directory/Redstone/src/Redstone/Programs/Redstone.RedstoneFullNodeD
+sudo dotnet restore
+sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-echo $log_prefix chmoding the Stratis.StratisD file
-chmod +x $build_directory/StratisCore.UI/daemon/Stratis.StratisD
+echo $log_prefix chmoding the Redstone.RedstoneFullNodeD file
+sudo chmod +x $build_directory/StratisCore.UI/daemon/Redstone.RedstoneFullNodeD
 
 # node Build
 cd $build_directory/StratisCore.UI

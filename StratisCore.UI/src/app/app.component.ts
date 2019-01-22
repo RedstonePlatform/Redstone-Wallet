@@ -65,13 +65,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private setTitle() {
-    let applicationName = "Stratis Core";
+    let applicationName = 'Redstone Wallet';
     let applicationVersion = this.globalService.getApplicationVersion();
     let newTitle = applicationName + " " + applicationVersion;
     this.titleService.setTitle(newTitle);
   }
 
   public openSupport() {
-    this.electronService.shell.openExternal("https://github.com/stratisproject/StratisCore/releases/tag/v1.0.0.0");
+    //this.electronService.shell.openExternal("https://github.com/stratisproject/StratisCore/releases/tag/v1.0.0.0");
+    this.electronService.shell.openExternal("https://github.com/RedstonePlatform/Redstone-Wallet/");
   }
 }
