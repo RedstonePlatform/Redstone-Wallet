@@ -7,7 +7,7 @@
 # 5. start the app
 
 $env:current_folder = $PSScriptRoot
-$env:BUILD_FOLDER = $env:current_folder + "\.."
+$env:BUILD_FOLDER = $env:current_folder + "\..\.."
 
 $env:win_runtime = "win-x86" # win-x64
 $env:configuration = "Release" # Debug
