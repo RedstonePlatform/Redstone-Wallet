@@ -16,6 +16,8 @@ $env:plat = "win32"
 $env:app_output_name = "app"
 
 cd $env:BUILD_FOLDER
+Remove-Item $env:BUILD_FOLDER/StratisCore.UI/app-builds/* -Recurse
+
 dir
 Write-Host "Installing dependencies" -foregroundcolor "magenta"     
 Write-Host "--> git submodule" -foregroundcolor "magenta"
