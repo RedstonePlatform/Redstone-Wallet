@@ -59,7 +59,7 @@ ls -al -h
 
 # Move files to release directory
 sudo mkdir -p $release_directory
-sudo cp $build_directory/StratisCore.UI/app-builds/* $release_directory
+sudo cp $build_directory/StratisCore.UI/app-builds/* $release_directory 2>/dev/null
 
 echo $log_prefix FINISHED build
 

@@ -73,6 +73,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public openSupport() {
     //this.electronService.shell.openExternal("https://github.com/stratisproject/StratisCore/releases/tag/v1.0.0.0");
-    this.electronService.shell.openExternal("https://github.com/RedstonePlatform/Redstone-Wallet/");
+    this.electronService.shell.openExternal("https://github.com/RedstonePlatform/Redstone-Wallet/releases/tag/v1.0.0");
   }
 }
