@@ -7,7 +7,7 @@
 # 5. start the app
 
 $env:current_folder = $PSScriptRoot
-$env:BUILD_FOLDER = $env:current_folder + "\.."
+$env:BUILD_FOLDER = $env:current_folder + "\..\.."
 
 $env:win_runtime = "win-x64" # win-x32
 $env:configuration = "Release" # Debug
@@ -16,6 +16,8 @@ $env:plat = "win32"
 $env:app_output_name = "app"
 
 cd $env:BUILD_FOLDER
+Remove-Item $env:BUILD_FOLDER/StratisCore.UI/app-builds/* -Recurse
+
 dir
 Write-Host "Installing dependencies" -foregroundcolor "magenta"     
 Write-Host "--> git submodule" -foregroundcolor "magenta"

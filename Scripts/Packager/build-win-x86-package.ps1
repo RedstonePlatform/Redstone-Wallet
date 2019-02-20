@@ -7,7 +7,7 @@
 # 5. start the app
 
 $env:current_folder = $PSScriptRoot
-$env:BUILD_FOLDER = $env:current_folder + "\.."
+$env:BUILD_FOLDER = $env:current_folder + "\..\.."
 
 $env:win_runtime = "win-x86" # win-x64
 $env:configuration = "Release" # Debug
@@ -16,6 +16,8 @@ $env:plat = "win32"
 $env:app_output_name = "app"
 
 cd $env:BUILD_FOLDER
+Remove-Item $env:BUILD_FOLDER/StratisCore.UI/app-builds/* -Recurse
+
 dir
 Write-Host "Installing dependencies" -foregroundcolor "magenta"     
 Write-Host "--> git submodule" -foregroundcolor "magenta"
@@ -57,8 +59,9 @@ dir
 cd app-builds
 # replace the spaces in the name with a dot as CI system have trouble handling spaces in names.
 Dir *.exe | rename-item -newname {  $_.name  -replace " ","."  }
-dir      
+dir 
 Write-Host "[$env:configuration][$env:win_runtime] Done! Your installer is:" -foregroundcolor "green"
 Get-ChildItem -Path "*.exe" | foreach-object {$_.Fullname}
 if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
+
 Read-Host "Press ENTER to exit"
