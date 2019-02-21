@@ -47,10 +47,6 @@ sudo npm install
 sudo npm run package:linuxarm
 echo $log_prefix finished packaging
 
-echo $log_prefix contents of build_directory
-cd $build_directory
-ls -al -h
-
 echo $log_prefix contents of the app-builds folder
 cd $build_directory/StratisCore.UI/app-builds/
 # replace the spaces in the name with a dot as CI system have trouble handling spaces in names.
@@ -59,7 +55,11 @@ ls -al -h
 
 # Move files to release directory
 sudo mkdir -p $release_directory
-sudo cp $build_directory/StratisCore.UI/app-builds/* $release_directory 2>/dev/null
+sudo cp $build_directory/StratisCore.UI/app-builds/* $release_directory #2>/dev/null
+
+#Clear previous builds
+sudo rm -rf $build_directory/StratisCore.UI/app-builds/*
+sudo rm -f $build_directory/StratisCore.UI/app-builds/*
 
 echo $log_prefix FINISHED build
 
