@@ -1,5 +1,5 @@
 {
-  "appId": "com.stratisplatform.core",
+  "appId": "com.redstoneplatform.core",
   "productName": "Redstone Wallet",
   "publish": null,
   "directories": {
@@ -31,6 +31,7 @@
     "icon": "dist/assets/images/icon-tray.png",
     "target": [
       "deb",
+      "AppImage",
       "tar.gz"
     ],
     "synopsis": "Redstone Wallet.",
