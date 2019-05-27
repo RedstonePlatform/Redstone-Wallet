@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
   "name": "Redstone",
   "description": "Redstone Wallet",
-  "version": "1.1.0",
-=======
-  "name": "stratis-core",
-  "description": "Stratis Core Wallet",
   "version": "1.1.1",
->>>>>>> 17350dd121333eabc6c2479c713d72381ad2f98f
   "author": {
     "name": "Redstone Platform",
     "email": "admin@redstonecoin.com"
