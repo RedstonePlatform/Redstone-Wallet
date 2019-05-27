@@ -76,7 +76,9 @@ function createWindow() {
 
   // Emitted when the window is going to close.
   mainWindow.on('close', () => {
-    shutdownDaemon(apiPort);
+    if (!serve && !nodaemon) {
+      shutdownDaemon(apiPort);
+    }
   })
 
   // Emitted when the window is closed.
@@ -173,15 +175,9 @@ function startDaemon(daemonName) {
 	  daemonPath = path.resolve(__dirname, '..//..//resources//daemon//' + daemonName);
   }
 
-  if (!testnet) {
-    daemonProcess = spawnDaemon(daemonPath, {
-      detached: true
-    });
-  } else if (testnet) {
-    daemonProcess = spawnDaemon(daemonPath, ['-testnet'], {
-      detached: true
-    });
-  }
+  daemonProcess = spawnDaemon(daemonPath, [args.join(' ').replace('--','-')], {
+    detached: true
+  });
 
   daemonProcess.stdout.on('data', (data) => {
     writeLog(`Redstone: ${data}`);
