@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { GlobalService } from '../../shared/services/global.service';
-import { ApiService } from '../../shared/services/api.service';
-import { ModalService } from '../../shared/services/modal.service';
+import { GlobalService } from '@shared/services/global.service';
+import { ApiService } from '@shared/services/api.service';
+import { ModalService } from '@shared/services/modal.service';
 
-import { PasswordValidationDirective } from '../../shared/directives/password-validation.directive';
+import { PasswordValidationDirective } from '@shared/directives/password-validation.directive';
 
-import { WalletCreation } from '../../shared/models/wallet-creation';
+import { WalletCreation } from '@shared/models/wallet-creation';
 
 @Component({
   selector: 'create-component',
@@ -22,11 +22,13 @@ export class CreateComponent implements OnInit {
   }
 
   public createWalletForm: FormGroup;
+  public sidechainEnabled: boolean;
   private newWallet: WalletCreation;
   private mnemonic: string;
 
   ngOnInit() {
     this.getNewMnemonic();
+    this.sidechainEnabled = this.globalService.getSidechainEnabled();
   }
 
   private buildCreateForm(): void {

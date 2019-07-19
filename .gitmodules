@@ -1,6 +1,3 @@
 [submodule "Redstone"]
 	path = Redstone
 	url = https://github.com/RedstonePlatform/Redstone.git
-[submodule "FederatedSidechains"]
-	path = FederatedSidechains
-	url = https://github.com/RedstonePlatform/FederatedSidechains.git

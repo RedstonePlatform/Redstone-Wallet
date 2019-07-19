@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../../shared/services/api.service';
-import { GlobalService } from '../../../../shared/services/global.service';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { WalletInfo } from '../../../../shared/models/wallet-info';
+import { ApiService } from '@shared/services/api.service';
+import { GlobalService } from '@shared/services/global.service';
+import { ModalService } from '@shared/services/modal.service';
+import { WalletInfo } from '@shared/models/wallet-info';
 
 @Component({
   selector: 'app-ext-pubkey',
@@ -13,7 +13,7 @@ export class ExtPubkeyComponent implements OnInit {
   constructor(private apiService: ApiService, private globalService: GlobalService, private genericModalService: ModalService) { }
 
   public extPubKey: string;
-  public copied: Boolean = false;
+  public copied: boolean = false;
 
   ngOnInit() {
     let walletInfo = new WalletInfo(this.globalService.getWalletName());

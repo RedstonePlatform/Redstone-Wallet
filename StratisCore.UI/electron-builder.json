@@ -21,14 +21,14 @@
     "!tslint.json"
   ],
   "win": {
-    "icon": "dist/assets/images/icon",
+    "icon": "dist/assets/images/redstone/icon",
     "target": [
       "nsis"
     ],
     "artifactName": "${productName}-v${version}-setup-${os}-${arch}.${ext}"
   },
   "linux": {
-    "icon": "dist/assets/images/icon-tray.png",
+    "icon": "dist/assets/images/redstone/",
     "target": [
       "deb",
       "AppImage",
@@ -39,7 +39,7 @@
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },
   "mac": {
-    "icon": "dist/assets/images/icon.icns",
+    "icon": "dist/assets/images/redstone/icon.icns",
     "target": [
       "dmg"
     ],
@@ -61,7 +61,7 @@
   },
   "extraResources": [
     "daemon/**/*",
-    "src/assets/images/icon-tray.png",
+    "src/assets/images/redstone/icon-16.png",
     "src/assets/images/license_en.txt"
   ]
 }

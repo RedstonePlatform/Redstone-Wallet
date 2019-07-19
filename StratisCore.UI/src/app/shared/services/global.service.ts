@@ -10,20 +10,22 @@ export class GlobalService {
     this.setSidechainEnabled();
     this.setTestnetEnabled();
     this.setApiPort();
+    this.setDaemonIP();
   }
 
-  private applicationVersion: string = "1.1.1";
+  private applicationVersion: string = "1.2.1";
   private testnet: boolean = false;
   private sidechain: boolean = false;
   private mainApiPort: number = 37221;
   private testApiPort: number = 38221;
-  private mainSideChainApiPort: number = 38225;
-  private testSideChainApiPort: number = 38225;
+  private mainSideChainApiPort: number = 37223;
+  private testSideChainApiPort: number = 38223;
   private apiPort: number;
   private walletPath: string;
   private currentWalletName: string;
   private coinUnit: string;
   private network: string;
+  private daemonIP: string;
 
 
   getApplicationVersion() {
@@ -104,5 +106,17 @@ export class GlobalService {
 
   setCoinUnit(coinUnit: string) {
     this.coinUnit = coinUnit;
+  }
+
+  getDaemonIP() {
+    return this.daemonIP;
+  }
+
+  setDaemonIP() {
+    if (this.electronService.isElectronApp) {
+      this.daemonIP = this.electronService.ipcRenderer.sendSync('get-daemonip');
+    } else {
+      this.daemonIP = 'localhost';
+    }
   }
 }

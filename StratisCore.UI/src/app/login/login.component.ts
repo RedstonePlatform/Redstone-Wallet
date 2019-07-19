@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { GlobalService } from '../shared/services/global.service';
-import { ApiService } from '../shared/services/api.service';
-import { ModalService } from '../shared/services/modal.service';
+import { GlobalService } from '@shared/services/global.service';
+import { ApiService } from '@shared/services/api.service';
+import { ModalService } from '@shared/services/modal.service';
 
-import { WalletLoad } from '../shared/models/wallet-load';
+import { WalletLoad } from '@shared/models/wallet-load';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     this.buildDecryptForm();
   }
 
+  public sidechainEnabled: boolean;
   public hasWallet: boolean = false;
   public isDecrypting = false;
   private openWalletForm: FormGroup;
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.getWalletFiles();
     this.getCurrentNetwork();
+    this.sidechainEnabled = this.globalService.getSidechainEnabled();
   }
 
   private buildDecryptForm(): void {

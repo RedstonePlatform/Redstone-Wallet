@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { ApiService } from '../../shared/services/api.service';
-import { GlobalService } from '../../shared/services/global.service';
-import { ModalService } from '../../shared/services/modal.service';
+import { ApiService } from '@shared/services/api.service';
+import { GlobalService } from '@shared/services/global.service';
+import { ModalService } from '@shared/services/modal.service';
 
-import { WalletInfo } from '../../shared/models/wallet-info';
+import { WalletInfo } from '@shared/models/wallet-info';
 
 @Component({
   selector: 'status-bar',
@@ -50,7 +50,7 @@ export class StatusBarComponent implements OnInit, OnDestroy {
           this.isChainSynced = generalWalletInfoResponse.isChainSynced;
           this.connectedNodes = generalWalletInfoResponse.connectedNodes;
 
-          const processedText = `Processed ${this.lastBlockSyncedHeight} out of ${this.chainTip} blocks.`;
+          const processedText = `Processed ${this.lastBlockSyncedHeight || '0'} out of ${this.chainTip} blocks.`;
           this.toolTip = `Synchronizing.  ${processedText}`;
 
           if (this.connectedNodes == 1) {

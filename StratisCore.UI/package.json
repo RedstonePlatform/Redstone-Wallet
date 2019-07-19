@@ -1,7 +1,7 @@
 {
   "name": "Redstone",
   "description": "Redstone Wallet",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "author": {
     "name": "Redstone Platform",
     "email": "admin@redstonecoin.com"
@@ -29,11 +29,11 @@
     "ng": "ng",
     "ng:serve": "ng serve",
     "ng:serve:web": "npm run postinstall:web && ng serve -o",
-    "start": "npm run postinstall:electron && npm-run-all -p ng:serve electron:serve",
-    "mainnet": "npm start",
-    "testnet": "npm run postinstall:electron && npm-run-all -p ng:serve electron:serve:testnet",
-    "sidechain": "npm run postinstall:electron && npm-run-all -p ng:serve electron:serve:sidechain",
-    "sidechain:testnet": "npm run postinstall:electron && npm-run-all -p ng:serve electron:serve:sidechain:testnet",
+    "start": "npm run postinstall:electron && npm-run-all -p ng:serve \"electron:serve -- {@}\" --",
+    "mainnet": "npm start --",
+    "testnet": "npm run postinstall:electron && npm-run-all -p ng:serve \"electron:serve:testnet -- {@}\" --",
+    "sidechain": "npm run postinstall:electron && npm-run-all -p ng:serve \"electron:serve:sidechain -- {@}\" --",
+    "sidechain:testnet": "npm run postinstall:electron && npm-run-all -p ng:serve \"electron:serve:sidechain:testnet -- {@}\" --",
     "build": "npm run postinstall:electron && npm run electron:serve-tsc && ng build",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
@@ -50,11 +50,18 @@
     "package:windows86": "npm run build:prod && electron-builder build --windows --ia32",
     "package:windows64": "npm run build:prod && electron-builder build --windows --x64",
     "package:mac": "npm run build:prod && electron-builder build --mac",
+    "package:sidechain:linux": "npm run build:prod && electron-builder build --linux --config ./electron-sidechain-builder.json",
+    "package:sidechain:linuxarm": "npm run build:prod && electron-builder build --linux --armv7l --config ./electron-sidechain-builder.json",
+    "package:sidechain:windows": "npm run build:prod && electron-builder build --windows --config ./electron-sidechain-builder.json",
+    "package:sidechain:windows86": "npm run build:prod && electron-builder build --windows --ia32 --config ./electron-sidechain-builder.json",
+    "package:sidechain:windows64": "npm run build:prod && electron-builder build --windows --x64 --config ./electron-sidechain-builder.json",
+    "package:sidechain:mac": "npm run build:prod && electron-builder build --mac --config ./electron-sidechain-builder.json",
     "test": "npm run postinstall:web && ng test",
     "e2e": "npm run postinstall:web && ng e2e"
   },
   "dependencies": {
     "electron-context-menu": "0.11.0",
+    "minimist": "^1.2.0",
     "ngx-pagination": "3.2.1",
     "ngx-qrcode2": "0.0.9"
   },
@@ -92,6 +99,7 @@
     "karma-coverage-istanbul-reporter": "2.0.5",
     "karma-jasmine": "2.0.1",
     "karma-jasmine-html-reporter": "1.4.0",
+    "minimist": "1.2.0",
     "ngx-bootstrap": "3.2.0",
     "ngx-clipboard": "12.0.0",
     "ngx-electron": "2.1.1",

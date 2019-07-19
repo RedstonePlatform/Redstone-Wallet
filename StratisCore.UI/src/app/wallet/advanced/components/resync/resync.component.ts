@@ -4,11 +4,11 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import { Subscription } from 'rxjs';
 
-import { WalletInfo } from '../../../../shared/models/wallet-info';
-import { ApiService } from '../../../../shared/services/api.service';
-import { GlobalService } from '../../../../shared/services/global.service';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { WalletRescan } from '../../../../shared/models/wallet-rescan';
+import { WalletInfo } from '@shared/models/wallet-info';
+import { ApiService } from '@shared/services/api.service';
+import { GlobalService } from '@shared/services/global.service';
+import { ModalService } from '@shared/services/modal.service';
+import { WalletRescan } from '@shared/models/wallet-rescan';
 
 @Component({
   selector: 'app-resync',
@@ -21,8 +21,8 @@ export class ResyncComponent implements OnInit, OnDestroy {
   private walletName: string;
   private lastBlockSyncedHeight: number;
   private chainTip: number;
-  private isChainSynced: Boolean;
-  public isSyncing: Boolean = true;
+  private isChainSynced: boolean;
+  public isSyncing: boolean = true;
   private generalWalletInfoSubscription: Subscription;
   public minDate = new Date("2009-08-09");
   public maxDate = new Date();
