@@ -55,10 +55,11 @@ ls -al -h
 
 # Move files to release directory
 sudo mkdir -p $release_directory
-sudo cp $build_directory/StratisCore.UI/app-builds/* $release_directory #2>/dev/null
+sudo cp -r $build_directory/StratisCore.UI/app-builds/* $release_directory
 
 #Clear previous builds
-sudo rm -rf $build_directory/StratisCore.UI/app-builds/*
-sudo rm -f $build_directory/StratisCore.UI/app-builds/*
+sudo rm -rf $build_directory/StratisCore.UI/app-builds
+sudo rm -rf $build_directory/StratisCore.UI/daemon
+sudo rm -rf $build_directory/StratisCore.UI/dist
 
 echo $log_prefix FINISHED build

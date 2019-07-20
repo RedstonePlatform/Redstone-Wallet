@@ -4,8 +4,8 @@ arch=x64
 configuration=Release  
 os_platform=linux
 log_prefix=LINUX-BUILD
-build_directory='/home/thecryptohunter/projects/RedstoneWallet' #$(dirname $(dirname "$0"))
-//build_directory=$(dirname $PWD)
+//build_directory='/home/thecryptohunter/projects/RedstoneWallet' #$(dirname $(dirname "$0"))
+build_directory=$(dirname $PWD)
 
 # exit if error
 set -o errexit

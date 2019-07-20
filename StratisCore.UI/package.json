@@ -1,10 +1,10 @@
 {
-  "name": "Redstone",
-  "description": "Redstone Wallet",
+  "name": "redstone",
+  "description": "redstone-wallet",
   "version": "1.2.1",
   "author": {
-    "name": "Redstone Platform",
-    "email": "admin@redstonecoin.com"
+    "name": "redstone-platform",
+    "email": "admin@redstoneplatform.com"
   },
   "license": "MIT",
   "homepage": "https://github.com/RedstonePlatform/Redstone-Wallet.git",
@@ -72,16 +72,16 @@
     "@angular/common": "7.2.10",
     "@angular/compiler": "7.2.10",
     "@angular/compiler-cli": "7.2.10",
-    "@angular/core": "7.2.10",
+    "@angular/core": "^7.2.10",
     "@angular/forms": "7.2.10",
     "@angular/http": "7.2.10",
     "@angular/language-service": "7.2.10",
     "@angular/platform-browser": "7.2.10",
     "@angular/platform-browser-dynamic": "7.2.10",
     "@angular/router": "7.2.10",
+    "@ng-bootstrap/ng-bootstrap": "4.1.0",
     "@ngx-translate/core": "11.0.1",
     "@ngx-translate/http-loader": "4.0.0",
-    "@ng-bootstrap/ng-bootstrap": "4.1.0",
     "@types/jasmine": "2.8.7",
     "@types/jasminewd2": "2.0.6",
     "@types/node": "10.12.23",

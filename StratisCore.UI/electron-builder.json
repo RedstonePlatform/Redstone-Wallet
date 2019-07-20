@@ -1,6 +1,6 @@
 {
   "appId": "com.redstoneplatform.core",
-  "productName": "Redstone Wallet",
+  "productName": "redstone-wallet",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -34,7 +34,7 @@
       "AppImage",
       "tar.gz"
     ],
-    "synopsis": "Redstone Wallet.",
+    "synopsis": "redstone wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },

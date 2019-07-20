@@ -136,7 +136,7 @@
       }
     }
   },
-  "defaultProject": "redstone-core",
+  "defaultProject": "redstone-wallet",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
