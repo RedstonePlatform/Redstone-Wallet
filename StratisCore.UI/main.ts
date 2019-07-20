@@ -8,7 +8,8 @@ if (os.arch() === 'arm') {
 
 // Set to true if you want to build Core for sidechains
 const buildForSidechain = false;
-const daemonName = buildForSidechain ? 'Stratis.CirrusD' : 'Stratis.StratisD';
+//const daemonName = buildForSidechain ? 'Stratis.CirrusD' : 'Stratis.StratisD';
+const daemonName = buildForSidechain ? 'Stratis.CirrusD' : 'Redstone.RedstoneFullNodeD';
 
 let serve;
 let testnet;
@@ -24,7 +25,8 @@ if (buildForSidechain) {
   sidechain = true;
 }
 
-const applicationName = sidechain ? 'Cirrus Core' : 'Stratis Core';
+//const applicationName = sidechain ? 'Cirrus Core' : 'Stratis Core';
+const applicationName = sidechain ? 'Cirrus Core' : 'Redstone Wallet';
 
 // Set default API port according to network
 let apiPortDefault;
@@ -89,7 +91,6 @@ function createWindow() {
     frame: true,
     minWidth: 1150,
     minHeight: 650,
-//    title: "Redstone Wallet"
     title: applicationName
   });
 
@@ -219,8 +220,9 @@ function startDaemon() {
 
 function createTray() {
   // Put the app in system tray
-  let iconPath = 'stratis/icon-16.png';
-  if (sidechain) {
+//  let iconPath = 'stratis/icon-16.png';
+  let iconPath = 'redstone/icon-16.png';
+if (sidechain) {
     iconPath = 'cirrus/icon-16.png';
   }
   let trayIcon;

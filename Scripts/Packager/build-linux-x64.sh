@@ -34,6 +34,7 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
 cd $build_directory/Redstone/src/Redstone/Programs/Redstone.RedstoneFullNodeD
+sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
@@ -54,6 +55,7 @@ for file in *.{tar.gz,deb}; do mv "$file" `echo $file | tr ' ' '.'` 2>/dev/null 
 ls -al -h
 
 # Move files to release directory
+sudo rm -rf $release_directory
 sudo mkdir -p $release_directory
 sudo cp -r $build_directory/StratisCore.UI/app-builds/* $release_directory
 
